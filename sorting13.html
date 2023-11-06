@@ -1,0 +1,75 @@
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;  
+#include &lt;string.h&gt;  
+
+
+int bubble(char str[][10], int size) {
+    int step = 0, i, j;
+    char temp[10];
+
+    for (i = 0; i < size; i++) {
+        for (j = 0; j < size - i; j++) {
+            if (strcmp(str[j], str[j + 1]) > 0) {
+                strcpy(temp, str[j]);
+                strcpy(str[j], str[j + 1]);
+                strcpy(str[j + 1], temp);
+            }
+        }
+    }
+    return step;
+}
+
+int main() {
+    char str[5][10];
+    int i;
+
+    printf("Enter the strings\n");
+    for (i = 0; i < 5; i++) {
+        printf("Enter the string at location %d: ", i + 1);
+        scanf("%s", str[i]);
+    }
+
+    int step = bubble(str, 5);
+
+    printf("Sorted Strings are\n");
+    for (i = 0; i < 5; i++) {
+        printf("%s\n", str[i]);
+    }
+
+    return 0;
+}
+
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the strings
+Enter the string at location 1: rr
+Enter the string at location 2: yy
+Enter the string at location 3: oo
+Enter the string at location 4: ii
+Enter the string at location 5: pp
+Sorted Strings are
+ii
+oo
+pp
+rr
+yy
+
+--------------------------------
+ </pre>
+    </div>
+</body>
+</html>

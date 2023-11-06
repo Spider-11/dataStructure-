@@ -1,0 +1,56 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;
+
+
+void duplicate(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] != 0) {
+ for (int j = i + 1; j < size; j++) {
+ if (arr[j] == arr[i]) {
+ arr[j] = 0;
+ }
+ }
+ }
+    }
+}
+
+int main() {
+    int arr[10];
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < 10; i++) {
+        scanf("%d", &arr[i]);
+    }
+    duplicate(arr, 10);
+    printf("Processed Array:\n");
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", arr[i]);
+    }
+}
+<h3>Output</h3>
+<div>
+        <pre>
+Enter the elements of the array:
+54
+23
+5
+4
+54
+34
+26
+75
+23
+4
+Number of duplicate values: 3
+
+--------------------------------
+  </pre>
+    </div>
+</body>
+</html>

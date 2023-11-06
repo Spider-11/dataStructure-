@@ -1,0 +1,100 @@
+
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;dos.h&gt;
+
+void sorting(int[],int);
+int main()
+{
+int ar[5],ar2[5],ar3[10],ar5[10],i;
+
+printf("Enter the first array\n");
+for(i=0;i < 5;i++)
+{
+
+scanf("%d",&ar[i]);
+}
+printf("\nEnter the Second array\n");
+for(i=0;i < 5;i++)
+{
+
+scanf("%d",&ar2[i]);
+}
+for(i=0;i  < 5;i++)
+{
+ar3[i]=ar[i];
+}
+for(i=0;i < 5;i++)
+{
+ar3[i+5]=ar2[i];
+}
+sorting(ar3,10);
+printf("\nMerge of two arrays are\n");
+for(i=0;i<10;i++)
+{
+
+printf("%d\n",ar3[i]);
+}
+
+}
+void sorting(int ar4[],int size)
+{
+int i,j,temp;
+for(i=0;i < size;i++)
+{
+for(j=i+0;j < size;j++)
+{ 
+if(ar4[i] > ar4[j])
+{
+temp=ar4[i];
+ar4[i]=ar4[j];
+ar4[j]=temp;
+}
+}
+}
+}
+
+</pre>
+</div>
+<h3>Output</h3>
+<div>
+        <pre>
+Enter the first array
+54321
+23
+12
+34
+22
+
+Enter the Second array
+442
+124
+242
+1234
+12
+
+Merge of two arrays are
+12
+12
+22
+23
+34
+124
+242
+442
+1234
+54321
+
+--------------------------------
+  </pre>
+    </div>
+</body>
+</html>

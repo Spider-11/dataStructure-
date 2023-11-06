@@ -1,0 +1,212 @@
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;stdlib.h&gt; 
+#define MAX_SIZE 20
+
+struct TwoStacks
+{
+    int arr[MAX_SIZE];
+    int top1;
+    int top2;
+};
+
+void initialize(struct TwoStacks *stacks)
+{
+    stacks->top1 = -1;
+    stacks->top2 = MAX_SIZE;
+}
+
+void push1(struct TwoStacks *stacks, int value)
+{
+    if (stacks->top1 < stacks->top2 - 1)
+    {
+        stacks->arr[++stacks->top1] = value;
+        printf("Pushed %d onto Stack 1\n", value);
+    }
+    else
+    {
+        printf("Stack 1 overflow\n");
+    }
+}
+
+void push2(struct TwoStacks *stacks, int value)
+{
+    if (stacks->top1 < stacks->top2 - 1)
+    {
+        stacks->arr[--stacks->top2] = value;
+        printf("Pushed %d onto Stack 2\n", value);
+    }
+    else
+    {
+        printf("Stack 2 overflow\n");
+    }
+}
+
+int pop1(struct TwoStacks *stacks)
+{
+    if (stacks->top1 >= 0)
+    {
+        int value = stacks->arr[stacks->top1--];
+        printf("Popped %d from Stack 1\n", value);
+        return value;
+    }
+    else
+    {
+        printf("Stack 1 underflow\n");
+        return -1;
+    }
+}
+
+int pop2(struct TwoStacks *stacks)
+{
+    if (stacks->top2 < MAX_SIZE)
+    {
+        int value = stacks->arr[stacks->top2++];
+        printf("Popped %d from Stack 2\n", value);
+        return value;
+    }
+    else
+    {
+        printf("Stack 2 underflow\n");
+        return -1;
+    }
+}
+
+int main()
+{
+    struct TwoStacks stacks;
+    initialize(&stacks);
+
+    int choice, value;
+
+    do
+    {
+        printf("\n1. Push to Stack 1\n");
+        printf("2. Push to Stack 2\n");
+        printf("3. Pop from Stack 1\n");
+        printf("4. Pop from Stack 2\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            printf("Enter value to push to Stack 1: ");
+            scanf("%d", &value);
+            push1(&stacks, value);
+            break;
+        case 2:
+            printf("Enter value to push to Stack 2: ");
+            scanf("%d", &value);
+            push2(&stacks, value);
+            break;
+        case 3:
+            pop1(&stacks);
+            break;
+        case 4:
+            pop2(&stacks);
+            break;
+        case 5:
+            printf("Exiting the program\n");
+            break;
+        default:
+            printf("Invalid choice, please try again\n");
+        }
+
+    } while (choice != 5);
+
+    return 0;
+}
+
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+
+
+1. Push to Stack 1
+2. Push to Stack 2
+3. Pop from Stack 1
+4. Pop from Stack 2
+5. Exit
+Enter your choice: 1
+Enter value to push to Stack 1: 23
+Pushed 23 onto Stack 1
+
+1. Push to Stack 1
+2. Push to Stack 2
+3. Pop from Stack 1
+4. Pop from Stack 2
+5. Exit
+Enter your choice: 2
+Enter value to push to Stack 2: 34
+Pushed 34 onto Stack 2
+
+1. Push to Stack 1
+2. Push to Stack 2
+3. Pop from Stack 1
+4. Pop from Stack 2
+5. Exit
+Enter your choice: 3
+Popped 23 from Stack 1
+
+1. Push to Stack 1
+2. Push to Stack 2
+3. Pop from Stack 1
+4. Pop from Stack 2
+5. Exit
+Enter your choice: 1
+Enter value to push to Stack 1: 23
+Pushed 23 onto Stack 1
+
+1. Push to Stack 1
+2. Push to Stack 2
+3. Pop from Stack 1
+4. Pop from Stack 2
+5. Exit
+Enter your choice: 1
+Enter value to push to Stack 1: 23
+Pushed 23 onto Stack 1
+
+1. Push to Stack 1
+2. Push to Stack 2
+3. Pop from Stack 1
+4. Pop from Stack 2
+5. Exit
+Enter your choice: 1
+Enter value to push to Stack 1: 43
+Pushed 43 onto Stack 1
+
+1. Push to Stack 1
+2. Push to Stack 2
+3. Pop from Stack 1
+4. Pop from Stack 2
+5. Exit
+Enter your choice: 4
+Popped 34 from Stack 2
+
+1. Push to Stack 1
+2. Push to Stack 2
+3. Pop from Stack 1
+4. Pop from Stack 2
+5. Exit
+Enter your choice: 5
+Exiting the program
+
+--------------------------------
+</pre>
+    </div>
+</body>
+</html>

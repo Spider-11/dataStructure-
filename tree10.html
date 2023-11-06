@@ -1,0 +1,92 @@
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;stdlib.h&gt; 
+struct TreeNode {
+    int data;
+    struct TreeNode* left;
+    struct TreeNode* right;
+};
+struct TreeNode* insert(struct TreeNode* root, int value);
+int isDeadEnd(struct TreeNode* root, int min, int max);
+
+struct TreeNode* insert(struct TreeNode* root, int value) {
+    if (root == NULL) {
+        struct TreeNode* newNode = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+        newNode->data = value;
+        newNode->left = newNode->right = NULL;
+        return newNode;
+    }
+    if (value < root->data) {
+        root->left = insert(root->left, value);
+    } else if (value > root->data) {
+        root->right = insert(root->right, value);
+    }
+    return root;
+}
+int isDeadEnd(struct TreeNode* root, int min, int max) {
+    if (root == NULL) {
+        return 0;
+    }
+
+    if (min == max) {
+        return 1;
+    }
+
+    int left = isDeadEnd(root->left, min, root->data - 1);
+    int right = isDeadEnd(root->right, root->data + 1, max);
+
+    return left || right;
+}
+int main() {
+    struct TreeNode* root = NULL;
+    int numNodes, value,i;
+
+    printf("Enter the number of nodes in the Binary Search Tree: ");
+    scanf("%d", &numNodes);
+
+    printf("Enter the values of the nodes:\n");
+    for (i = 0; i < numNodes; ++i) {
+        scanf("%d", &value);
+        root = insert(root, value);
+    }
+
+    if (isDeadEnd(root, INT_MIN, INT_MAX)) {
+        printf("The Binary Search Tree contains a dead end.\n");
+    } else {
+        printf("The Binary Search Tree does not contain a dead end.\n");
+    }
+
+    return 0;
+}
+
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+
+Enter the number of nodes in the Binary Search Tree: 7
+Enter the values of the nodes:
+6
+5
+4
+8
+2
+0
+2
+The Binary Search Tree does not contain a dead end.
+
+--------------------------------
+</pre>
+    </div>
+</body>
+</html>

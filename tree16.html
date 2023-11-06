@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+<h3>Code</h3>
+    <div id="div4">
+<pre>
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+struct TreeNode {
+    int data;
+    struct TreeNode* left;
+    struct TreeNode* right;
+};
+struct TreeNode* newNode(int value) {
+    struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    node->data = value;
+    node->left = node->right = NULL;
+    return node;
+}
+
+struct TreeNode* constructBST(int postorder[], int* postIndex, int min, int max) {
+    if (*postIndex < 0) {
+        return NULL;
+    }
+
+    int current = postorder[*postIndex];
+    if (current < min || current > max) {
+        return NULL;
+    }
+
+    struct TreeNode* root = newNode(current);
+    (*postIndex)--;
+    root->right = constructBST(postorder, postIndex, current, max);
+    root->left = constructBST(postorder, postIndex, min, current);
+    return root;
+}
+void postOrderTraversal(struct TreeNode* root) {
+    if (root != NULL) {
+        postOrderTraversal(root->left);
+        postOrderTraversal(root->right);
+        printf("%d ", root->data);
+    }
+}
+
+int main() {
+    int postorder[] = {1, 7, 5, 50, 40, 10};
+    int n = sizeof(postorder) / sizeof(postorder[0]);
+    int postIndex = n - 1;  
+    struct TreeNode* root = constructBST(postorder, &postIndex, INT_MIN, INT_MAX);
+    printf("Postorder traversal of constructed BST: ");
+    postOrderTraversal(root);
+    printf("\n");
+    return 0;
+}
+
+</pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+<pre>
+    Postorder traversal of constructed BST: 1 7 5 50 40 10
+</pre>
+    </div>
+</body>
+</html>

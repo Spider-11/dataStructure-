@@ -1,0 +1,73 @@
+
+
+
+
+<html>
+<head>
+    
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;string.h&gt; 
+
+
+void insertion(char str[][10], int size) {
+    int i, j;
+    char temp[10];
+    for (i = 1; i < size; i++) {
+        strcpy(temp, str[i]);
+        j = i - 1;
+        while (strcmp(temp, str[j]) < 0 && j >= 0) {
+            strcpy(str[j + 1], str[j]);
+            j--;
+        }
+        strcpy(str[j + 1], temp);
+    }
+}
+
+int main() {
+    int i;
+    char str[5][10];
+
+    printf("Enter the strings\n");
+    for (i = 0; i < 5; i++) {
+        printf("Enter the string at location %d: ", i + 1);
+        scanf("%s", str[i]);
+    }
+
+    insertion(str, 5);
+
+    printf("Sorted Arrays are\n");
+    for (i = 0; i < 5; i++) {
+        printf("%s\n", str[i]);
+    }
+
+    return 0;
+}
+
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the strings
+Enter the string at location 1: qq
+Enter the string at location 2: yy
+Enter the string at location 3: tt
+Enter the string at location 4: ee
+Enter the string at location 5: ww
+Sorted Arrays are
+ee
+qq
+tt
+ww
+yy
+
+--------------------------------       </pre>
+    </div>
+</body>
+</html>

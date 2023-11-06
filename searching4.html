@@ -1,0 +1,53 @@
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;string.h&gt;
+
+
+int linearSearch(char str[], char key) {
+    int index = 0;
+    while (str[index] != '\0') {
+        if (str[index] == key) {
+            return index; 
+        }
+        index++;
+    }
+    return -1;  
+}
+int main() {
+char str[50];
+char key;
+    printf("Enter a string: ");
+       gets(str);
+    printf("Enter a character to search: ");
+    scanf(" %c", &key);
+    int result = linearSearch(str, key);
+    if (result != -1) {
+        printf("Character %c found at index %d", key, result);
+    } else {
+        printf("Character  not found in the string");
+    }
+
+}
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter a string: hell world
+Enter a character to search: r
+Character r found at index 7
+--------------------------------
+        </pre>
+    </div>
+</body>
+</html>

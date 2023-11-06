@@ -1,0 +1,79 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;
+#include <stdio.h>
+
+void generateCombinations(int arr[], int data[], int start, int end, int index, int r) {
+    if (index == r) {
+        for (int i = 0; i < r; i++) {
+            printf("%d ", data[i]);
+        }
+        printf("\n");
+        return;
+    }
+    for (int i = start; i <= end && end - i + 1 >= r - index; i++) {
+        data[index] = arr[i];
+        generateCombinations(arr, data, i + 1, end, index + 1, r);
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < n; i++) {
+        printf("Element %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+
+    int r;
+    printf("Enter the size of combinations (r): ");
+    scanf("%d", &r);
+
+    int data[r];
+    printf("\nCombinations of digits are:\n");
+    generateCombinations(arr, data, 0, n - 1, 0, r);
+
+    return 0;
+}
+
+</pre>
+</div>
+<h3>Output</h3>
+<div>
+        <pre>
+Enter the size of the array: 5
+Enter the elements of the array:
+Element 1: 1
+Element 2: 2
+Element 3: 3
+Element 4: 4
+Element 5: 5
+Enter the size of combinations (r): 3
+
+Combinations of digits are:
+1 2 3
+1 2 4
+1 2 5
+1 3 4
+1 3 5
+1 4 5
+2 3 4
+2 3 5
+2 4 5
+3 4 5
+
+--------------------------------
+  </pre>
+    </div>
+</body>
+</html>

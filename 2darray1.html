@@ -1,0 +1,83 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;conio.h&gt;
+
+int main()
+{
+    int first[3][3],second[3][3];
+    int result[3][3];
+    int i,j;
+    printf("Enter the element of the first matrix:\n ");
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+        {
+            scanf("%d",&first[i][j]);
+        }
+    }
+    printf("Enter the element of the second matrix:\n ");
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+        {
+            scanf("%d",&second[i][j]);
+        }
+    }
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+        {
+            result[i][j]=first[i][j]+second[i][j];
+        }
+    }
+    
+    printf("Sum of two matrix is:\n");
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+        {
+            printf("%d\t",result[i][j]);
+        }
+    }
+}
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the element of the first matrix:
+5
+6
+3
+7
+2
+8
+2
+9
+2
+Enter the element of the second matrix:
+8
+3
+8
+3
+8
+7
+5
+3
+0
+Sum of two matrix is:
+13      9       11
+10      10      15
+7       12      2
+        </pre>
+    </div>
+</body>
+</html>

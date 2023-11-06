@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>Code</h3>
+    <div id="div4">
+<pre>
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+struct que {
+    int r, f;
+    int item[10];
+};
+
+int full(struct que *p);
+int empty(struct que *p);
+void insert(struct que *p, int x);
+int del(struct que *p);
+void bfs(int v, int n, int a[10][10]);
+
+int main() {
+    int i, j, v, n, a[10][10];
+    struct que q;
+    
+    printf("Enter number of vertices: ");
+    scanf("%d", &n);
+    
+    printf("Enter adjacency matrix of the graph:\n");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            scanf("%d", &a[i][j]);
+        }
+    }
+    
+    printf("Enter the starting node for BFS: ");
+    scanf("%d", &v);
+    
+    bfs(v, n, a);
+    
+    return 0;
+}
+
+void bfs(int v, int n, int a[10][10]) {
+    struct que q;
+    int visit[10], i;
+    
+    q.r = q.f = -1;
+    
+    for (i = 0; i < n; i++) {
+        visit[i] = 0;
+    }
+    
+    insert(&q, v);
+    printf("Visit %d\n", v);
+    visit[v] = 1;
+    
+    while (!empty(&q)) {
+        v = del(&q);
+        for (i = 0; i < n; i++) {
+            if (visit[i] == 0 && a[v][i] != 0) {
+                insert(&q, i);
+                visit[i] = 1;
+                printf("Visit %d\n", i);
+            }
+        }
+    }
+}
+
+int empty(struct que *p) {
+    if (p->r == -1) {
+        return 1;
+    }
+    return 0;
+}
+
+int full(struct que *p) {
+    if (p->r == 9) { 
+        return 1;
+    }
+    return 0;
+}
+
+void insert(struct que *p, int x) {
+    if (p->r == -1) {
+        p->r = p->f = 0;
+        p->item[p->r] = x;
+    } else {
+        p->r = p->r + 1;
+        p->item[p->r] = x;
+    }
+}
+
+int del(struct que *p) {
+    int x;
+    x = p->item[p->f];
+    if (p->r == p->f) {
+        p->r = -1;
+        p->f = -1;
+    } else {
+        p->f = p->f + 1;
+    }
+    return x;
+}
+
+</pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+<pre>
+    Enter number of vertices: 5
+    Enter adjacency matrix of the graph:
+    0
+    1
+    1
+    1
+    1
+    1
+    0
+    0
+    1
+    0
+    0
+    1
+    0
+    0
+    0
+    1
+    1
+    1
+    1
+    0
+    0
+    1
+    1
+    0
+    1
+    Enter the starting node for BFS: 0
+    Visit 0
+    Visit 1
+    Visit 2
+    Visit 3
+    Visit 4
+</pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+  #include &lt;stdio.h&gt;
+int fibonacci(int n) {
+    if (n == 0 || n == 1) {
+        return n;
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
+void printFibonacciSequence(int num) {
+    int i;
+	printf("Fibonacci sequence up to %d: ", num);
+    for ( i = 0; i <= num; ++i) {
+        printf("%d ", fibonacci(i));
+    }
+    printf("\n");
+}
+int main() {
+    int num;
+    printf("Enter a non-negative integer: ");
+    scanf("%d", &num);
+    if (num < 0) {
+        printf("Please enter a non-negative integer.\n");
+    } else {
+        printf("Fibonacci of %d = %d\n", num, fibonacci(num));
+        printFibonacciSequence(num);
+    }
+    return 0;
+}
+
+        </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter a non-negative integer: 5
+Fibonacci of 5 = 5
+Fibonacci sequence up to 5: 0 1 1 2 3 5
+
+--------------------------------
+        </pre>
+    </div>
+</body>
+</html>

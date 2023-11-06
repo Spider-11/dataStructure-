@@ -1,0 +1,59 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include < stdio.h >
+
+#include < string.h >
+void displayTextWithAlignment(int alignment, char text[], int totalWidth) {
+	int i;
+    int textLength = strlen(text);
+    if (alignment == 1) {
+        printf("%s\n", text);
+    } else if (alignment == 2) {
+        int padding = (totalWidth - textLength) / 2;
+        for (i = 0; i < padding; i++) {
+            putchar(' ');
+        }
+        printf("%s\n", text);
+    } else if (alignment == 3) {
+        int padding = totalWidth - textLength;
+        for ( i = 0; i < padding; i++) {
+            putchar(' ');
+        }
+        printf("%s\n", text);
+    } else {
+        printf("Invalid alignment option\n");
+    }
+}
+int main() {
+    char text[100];
+    int alignment;
+    int totalWidth = 20;
+    printf("Enter the text:");
+ gets(text);
+    printf("Choose alignment (1 for left, 2 for center, 3 for right): ");
+    scanf("%d", &alignment);
+    displayTextWithAlignment(alignment, text, totalWidth);
+    return 0;
+}
+
+
+     </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+Enter the text:Jai Shree Ram
+Choose alignment (1 for left, 2 for center, 3 for right): 3
+       Jai Shree Ram
+
+--------------------------------
+ </pre>
+    </div>
+</body>
+</html>

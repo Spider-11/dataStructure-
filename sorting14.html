@@ -1,0 +1,84 @@
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;string.h&gt; 
+int bubbleSort(char ar[][100], int size, int index) {
+    if (index == size - 1) {
+        return 0;
+    }
+
+    int j;
+
+    for (j = 0; j < size - index - 1; j++) {
+        if (strcmp(ar[j], ar[j + 1]) > 0) {
+            char temp[100];
+            strcpy(temp, ar[j]);
+            strcpy(ar[j], ar[j + 1]);
+            strcpy(ar[j + 1], temp);
+        }
+    }
+
+    return bubbleSort(ar, size, index + 1);
+}
+
+int main() {
+    char ar[10][100];
+    int i, step = 0;
+    printf("Enter the strings\n");
+
+    for (i = 0; i < 10; i++) {
+        scanf("%s", ar[i]);
+    }
+
+    step = bubbleSort(ar, 10, 0);
+
+    printf("Sorted Strings are\n");
+
+    for (i = 0; i < 10; i++) {
+        printf("%s\n", ar[i]);
+    }
+
+    return 0;  // Add a return statement for the main function
+}
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the strings
+uy
+gh
+ee
+vg
+ou
+df
+dfr
+gfg
+hg
+fg
+Sorted Strings are
+df
+dfr
+ee
+fg
+gfg
+gh
+hg
+ou
+uy
+vg
+
+--------------------------------  </pre>
+    </div>
+</body>
+</html>

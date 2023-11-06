@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="styles.css">
+    </style>
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+ #include<stdio.h>
+int main()
+{
+	int first[3][3],second[3][3];
+	int result[3][3];
+	int i,j;
+	printf("Enter the element of the first matrix:\n ");
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			scanf("%d",&first[i][j]);
+		}
+	}
+	printf("Enter the element of the second matrix:\n ");
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			scanf("%d",&second[i][j]);
+		}
+	}
+		for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			result[i][j]=first[i][j]-second[i][j];
+		}
+	}
+	
+	printf("subtraction of two matrix is:\n");
+		for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			printf("%d\t",result[i][j]);
+		}
+		printf("\n");
+	}
+	
+}
+        </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+            Enter the element of the first matrix:
+2
+3
+4
+5
+6
+
+7
+8
+9
+3
+Enter the element of the second matrix:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+subtraction of two matrix is:
+1       1       1
+1       1       1
+1       1       -6
+        </pre>
+    </div>
+</body>
+</html>

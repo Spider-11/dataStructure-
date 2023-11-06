@@ -1,0 +1,223 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;stdlib.h&gt; 
+
+struct que {
+    char str[10];
+    struct que *next;
+};
+
+struct que *rear = NULL, *front = NULL, *newnode, *temp;
+
+int insert(int count) {
+    newnode = (struct que*)malloc(sizeof(struct que));
+    if (newnode == NULL) {
+        printf("Memory allocation failed\n");
+        exit(1);
+    }
+
+    printf("Enter the string\n");
+    scanf("%s", newnode->str);
+    newnode->next = NULL;
+
+    if (rear == NULL) {
+        rear = front = newnode;
+    } else {
+        rear->next = newnode;
+        rear = newnode;
+    }
+
+    count++;
+    return count;
+}
+
+int del(int count) {
+    if (front == NULL) {
+        printf("Queue is empty\n");
+    } else {
+        temp = front;
+        printf("Deleted string in queue is %s\n", temp->str);
+        front = front->next;
+        free(temp);
+        count--;
+    }
+    return count;
+}
+
+void peek() {
+    if (rear == NULL) {
+        printf("Queue is empty\n");
+    } else {
+        printf("Top string in queue is %s\n", front->str);
+    }
+}
+
+void isempty() {
+    if (rear == NULL) {
+        printf("Queue is empty\n");
+    } else {
+        printf("Queue is not empty\n");
+    }
+}
+
+void isfull() {
+    printf("Queue is not full\n");
+}
+
+int main() {
+    int ch, count = 0;
+    while (1) {
+        printf("\n1. Insert\n");
+        printf("2. Delete\n");
+        printf("3. Peek\n");
+        printf("4. Is empty\n");
+        printf("5. Is full\n");
+        printf("6. Total nodes\n");
+        printf("7. Exit\n");
+        printf("Enter your choice\n");
+        scanf("%d", &ch);
+        switch (ch) {
+            case 1:
+                count = insert(count);
+                break;
+            case 2:
+                count = del(count);
+                break;
+            case 3:
+                peek();
+                break;
+            case 4:
+                isempty();
+                break;
+            case 5:
+                isfull();
+                break;
+            case 6:
+                printf("Total nodes in queue is %d\n", count);
+                break;
+            case 7:
+                exit(0);
+            default:
+                printf("Enter a valid number\n");
+        }
+    }
+}
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+
+1. Insert
+2. Delete
+3. Peek
+4. Is empty
+5. Is full
+6. Total nodes
+7. Exit
+Enter your choice
+1
+Enter the string
+jai ho
+
+1. Insert
+2. Delete
+3. Peek
+4. Is empty
+5. Is full
+6. Total nodes
+7. Exit
+Enter your choice
+Enter the string
+
+1. Insert
+2. Delete
+3. Peek
+4. Is empty
+5. Is full
+6. Total nodes
+7. Exit
+Enter your choice
+1
+Enter the string
+bye
+
+1. Insert
+2. Delete
+3. Peek
+4. Is empty
+5. Is full
+6. Total nodes
+7. Exit
+Enter your choice
+1
+Enter the string
+good
+
+1. Insert
+2. Delete
+3. Peek
+4. Is empty
+5. Is full
+6. Total nodes
+7. Exit
+Enter your choice
+2
+Deleted string in queue is jai
+
+1. Insert
+2. Delete
+3. Peek
+4. Is empty
+5. Is full
+6. Total nodes
+7. Exit
+Enter your choice
+3
+Top string in queue is ho
+
+1. Insert
+2. Delete
+3. Peek
+4. Is empty
+5. Is full
+6. Total nodes
+7. Exit
+Enter your choice
+4
+Queue is not empty
+
+1. Insert
+2. Delete
+3. Peek
+4. Is empty
+5. Is full
+6. Total nodes
+7. Exit
+Enter your choice
+5
+Queue is not full
+
+1. Insert
+2. Delete
+3. Peek
+4. Is empty
+5. Is full
+6. Total nodes
+7. Exit
+Enter your choice
+7
+
+--------------------------------
+    </div>
+</body>
+</html>

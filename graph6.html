@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Code></h3>
+    <div id="div4">
+<pre>
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+struct node {
+    int data;
+    struct node *link;
+};
+
+struct node* g[10];
+int visit[10];
+
+void read();
+void edge(int, int);
+void dfs(int, int);
+
+int n;
+
+int main() {
+    int i;
+
+    read();
+
+    for (i = 0; i < n; i++) {
+        visit[i] = 0;
+    }
+
+    dfs(0, n);
+
+    return 0;
+}
+
+void dfs(int v, int n) {
+    struct node *p;
+
+    printf("Visit %d\n", v);
+    visit[v] = 1;
+    p = g[v];
+
+    while (p != NULL) {
+        int w = p->data;
+        if (!visit[w]) {
+            dfs(w, n);
+        }
+        p = p->link;
+    }
+}
+
+void read() {
+    int i, vi, vj, noe;
+
+    printf("Enter number of nodes: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        g[i] = NULL;
+    }
+
+    printf("Enter number of edges: ");
+    scanf("%d", &noe);
+
+    for (i = 0; i < noe; i++) {
+        printf("Enter edge (vi, vj): ");
+        scanf("%d%d", &vi, &vj);
+        edge(vi, vj);
+    }
+}
+
+void edge(int vi, int vj) {
+    struct node *p, *q;
+
+    q = (struct node*)malloc(sizeof(struct node));
+    q->data = vj;
+    q->link = NULL;
+
+    if (g[vi] == NULL) {
+        g[vi] = q;
+    } else {
+        p = g[vi];
+        while (p->link != NULL) {
+            p = p->link;
+        }
+        p->link = q;
+    }
+}
+
+</pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+<pre>
+    Enter number of nodes: 5
+    Enter number of edges: 4
+    Enter edge (vi, vj): 0 1
+    Enter edge (vi, vj): 0 2
+    Enter edge (vi, vj): 1 4
+    Enter edge (vi, vj): 1 2
+    Visit 0
+    Visit 1
+    Visit 4
+    Visit 2
+    
+</pre>
+    </div>
+</body>
+</html>

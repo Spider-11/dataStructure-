@@ -1,0 +1,69 @@
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;  
+#include &lt;string.h&gt;  
+void selection(char str[][10], int size) {
+    int i, j;
+    char temp[10];
+    for (i = 0; i < size; i++) {
+        for (j = i + 1; j < size; j++) {
+            if (strcmp(str[i], str[j]) > 0) {
+                strcpy(temp, str[i]);
+                strcpy(str[i], str[j]);
+                strcpy(str[j], temp);
+            }
+        }
+    }
+}
+
+int main() {
+    int i;
+    char str[5][10];
+
+    for (i = 0; i < 5; i++) {
+        printf("Enter the string at location %d: ", i + 1);
+        scanf("%s", str[i]);
+    }
+
+    selection(str, 5);
+
+    printf("Sorted strings are\n");
+    for (i = 0; i < 5; i++) {
+        printf("%s\n", str[i]);
+    }
+
+    return 0;
+}
+
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the string at location 1: gg
+Enter the string at location 2: tt
+Enter the string at location 3: hh
+Enter the string at location 4: yy
+Enter the string at location 5: uu
+Sorted strings are
+gg
+hh
+tt
+uu
+yy
+
+--------------------------------
+ </pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+  #include &lt;stdio.h&gt;
+#include <stdio.h>
+int findMax(int arr[], int size) {
+    if (size == 1) {
+        return arr[0];
+    } else {
+        int subMax = findMax(arr, size - 1);
+        
+        return (subMax > arr[size - 1]) ? subMax : arr[size - 1];
+    }
+}
+int main() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+    int arr[size];
+    int i;
+    printf("Enter the elements of the array:\n");
+     for ( i = 0; i < size; ++i) {
+        scanf("%d", &arr[i]);
+    }
+    int maxElement = findMax(arr, size);
+    printf("The largest element in the array is: %d\n", maxElement);
+
+}
+
+
+
+        </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the size of the array: 6
+Enter the elements of the array:
+6754
+567
+8765
+456
+8564
+555
+The largest element in the array is: 8765
+
+--------------------------------
+        </pre>
+    </div>
+</body>
+</html>

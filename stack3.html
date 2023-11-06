@@ -1,0 +1,222 @@
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;stdlib.h&gt; 
+
+struct stack
+{
+    int data;
+    struct stack *next;
+};
+struct stack *top = NULL, *temp, *newnode;
+int push(int count)
+{
+    newnode = (struct stack *)malloc(sizeof(struct stack));
+    if (newnode == NULL)
+    {
+        printf("Memory allocation failed\n");
+        exit(1);
+    }
+    printf("Enter the data\n");
+    scanf("%d", &(newnode->data));
+    newnode->next = top;
+    top = newnode;
+    count++;
+
+    return count;
+}
+int pop(int count)
+{
+    if (top == NULL)
+    {
+        printf("Stack is empty\n");
+    }
+    else
+    {
+        temp = top;
+        printf("Data from the top of the stack is %d\n", temp->data);
+        top = top->next;
+        free(temp);
+        count--;
+    }
+    return count;
+}
+void peek()
+{
+    if (top == NULL)
+    {
+        printf("Stack is empty\n");
+    }
+    else
+    {
+        printf("Data from the top of the stack is %d\n", top->data);
+    }
+}
+void isempty()
+{
+    if (top == NULL)
+    {
+        printf("Stack is empty\n");
+    }
+    else
+    {
+        printf("Stack is not empty\n");
+    }
+}
+void isfull(int count, int maxSize)
+{
+    if (count == maxSize)
+    {
+        printf("Stack is full\n");
+    }
+    else
+    {
+        printf("Stack is not full\n");
+    }
+}
+int main()
+{
+    int ch, count = 0, maxSize;
+    printf("Enter the maximum size of the stack: ");
+    scanf("%d", &maxSize);
+    while (1)
+    {
+        printf("\n1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Peek\n");
+        printf("4. IsEmpty\n");
+        printf("5. IsFull\n");
+        printf("6. Exit\n");
+        printf("Enter your choice\n");
+        scanf("%d", &ch);
+        switch (ch)
+        {
+        case 1:
+            if (count < maxSize)
+            {
+                count = push(count);
+            }
+            else
+            {
+                printf("Stack is full\n");
+            }
+            break;
+        case 2:
+            count = pop(count);
+            break;
+        case 3:
+            peek();
+            break;
+        case 4:
+            isempty();
+            break;
+        case 5:
+            isfull(count, maxSize);
+            break;
+        case 6:
+           
+            while (top != NULL)
+            {
+                temp = top;
+                top = top->next;
+                free(temp);
+            }
+            exit(0);
+        default:
+            printf("Enter a valid number\n");
+        }
+    }
+    return 0;
+}
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the maximum size of the stack: 5
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter your choice
+1
+Enter the data
+34
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter your choice
+1
+Enter the data
+234
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter your choice
+2
+Data from the top of the stack is 234
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter your choice
+3
+Data from the top of the stack is 34
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter your choice
+4
+Stack is not empty
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter your choice
+5
+Stack is not full
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter your choice
+6
+
+--------------------------------
+</pre>
+    </div>
+</body>
+</html>

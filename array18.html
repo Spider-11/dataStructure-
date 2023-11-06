@@ -1,0 +1,61 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;
+
+
+
+int local_minima(int[], int);
+
+int main() {
+    int ar[10], i, min;
+
+    printf("Enter the arrays\n");
+    for (i = 0; i < 5; i++) {
+        scanf("%d", &ar[i]);
+    }
+
+    min = local_minima(ar, 5);
+
+    for (i = 0; i < 5; i++) {
+        if (min == ar[i]) {
+            printf("\nThe local minima is %d", ar[i]);
+        }
+    }
+
+}
+
+int local_minima(int ar2[], int size) {
+    int i, minima;
+    for (i = 0; i < size; i++) {
+        if (ar2[i] < ar2[i - 1] && ar2[i] < ar2[i + 1])
+            minima = ar2[i];
+    }
+    return minima;
+}
+
+
+</pre>
+</div>
+<h3>Output</h3>
+<div>
+        <pre>
+Enter the arrays
+4
+5
+3
+4
+6
+
+The local minima is 3
+--------------------------------
+  </pre>
+    </div>
+</body>
+</html>

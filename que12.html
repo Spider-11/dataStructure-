@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Code</h3>
+    <div id="div4">
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+struct que {
+    char str[10];
+    int priority;
+    struct que* next;
+};
+
+struct que* rear = NULL;
+struct que* front = NULL;
+int insert(int count) {
+    struct que* newnode = (struct que*) malloc(sizeof(struct que));
+    printf("Enter the string: ");
+    scanf("%s", newnode->str);
+    printf("Enter the priority: ");
+    scanf("%d", &(newnode->priority));
+    newnode->next = NULL;
+
+    if (rear == NULL) {
+	rear = front = newnode;
+    } else {
+	if (newnode->priority > rear->priority) {
+	    newnode->next = front;
+	    front = newnode;
+	} else {
+	    while (rear->next != NULL && newnode->priority <= rear->priority) {
+		rear = rear->next;
+	    }
+	    rear->next = newnode;
+	}
+    }
+    count++;
+    printf("String %s with priority %d is inserted.\n", newnode->str, newnode->priority);
+return count;
+}
+
+int  del(int count) {
+    if (front == NULL) {
+	printf("Queue is empty\n");
+    } else {
+	struct que* temp = front;
+	printf("Deleted string in queue is %s with priority %d\n",temp->str,temp->priority);
+	    front = front->next;
+	free(temp);
+	count--;
+    }
+    return count;
+}
+
+void peek() {
+    if (rear == NULL) {
+	printf("Queue is empty\n");
+    } else {
+	printf("Top element in the queue is %s with priority %d\n", rear->str, rear->priority);
+    }
+}
+
+void isempty() {
+    if (rear == NULL) {
+	printf("Queue is empty\n");
+    } else {
+	printf("Queue is not empty\n");
+    }
+}
+
+void isfull() {
+    printf("Queue is not full\n");
+}
+
+int main() {
+    int ch,count=0;
+    while (1) {
+	printf("\n1. Insert\n");
+	printf("2. Delete\n");
+	printf("3. Peek\n");
+	printf("4. Is empty\n");
+	printf("5. Is full\n");
+	printf("6. Total nodes\n");
+	printf("7. Exit\n");
+	printf("Enter your choice: ");
+	scanf("%d", &ch);
+	switch (ch) {
+	    case 1:
+		count=insert(count);
+		break;
+	    case 2:
+		count=del(count);
+		break;
+	    case 3:
+		peek();
+		break;
+	    case 4:
+		isempty();
+		break;
+	    case 5:
+		isfull();
+		break;
+	    case 6:
+		printf("Total nodes in queue is %d\n", count);
+		break;
+	    case 7:
+		exit(1);
+	    default:
+		printf("Enter a valid number\n");
+	}
+    }
+   }
+
+</pre>
+    </div>
+    <h3>Output</h3>
+    <div id="div5">
+<pre>
+
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 1
+    Enter the string: welcome
+    Enter the priority: 4
+    String welcome with priority 4 is inserted.
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 1
+    Enter the string: hye
+    Enter the priority: 2
+    String hye with priority 2 is inserted.
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 1
+    Enter the string: hello
+    Enter the priority: 6
+    String hello with priority 6 is inserted.
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 1
+    Enter the string: bye
+    Enter the priority: 8
+    String bye with priority 8 is inserted.
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 6
+    Total nodes in queue is 4
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 5
+    Queue is not full
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 2
+    Deleted string in queue is bye with priority 8
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 2
+    Deleted string in queue is hello with priority 6
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 2
+    Deleted string in queue is welcome with priority 4
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 7
+    
+</pre>
+    </div>
+</body>
+</html>

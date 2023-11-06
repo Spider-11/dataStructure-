@@ -1,0 +1,39 @@
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+  #include &lt;stdio.h&gt;
+#include <stdio.h>
+int sumOfNaturalNumbers(int n) {
+    if (n == 1) {
+        return 1;
+    } else {
+        return n + sumOfNaturalNumbers(n - 1);
+    }
+}
+int main() {
+    int result = sumOfNaturalNumbers(10);
+    printf("Sum of natural numbers up to 10: %d\n", result);
+
+    return 0;
+}
+
+        </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+Sum of natural numbers up to 10: 55
+
+--------------------------------
+--------------------------------
+        </pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>code</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;conio.h&gt;
+
+#include <stdio.h>
+
+int main() {
+    int m, n, p, q, c, d, k, sum = 0;
+    int first[10][10], second[10][10], multiply[10][10];
+
+    printf("\nEnter the number of rows and columns of first matrix:\n");
+    scanf("%d%d", &m, &n);
+    printf("\nEnter the number of rows and columns of second matrix:\n");
+    scanf("%d%d", &p, &q);
+    
+    if (n != p) {
+        printf("\nThe column of the first matrix is not equal to the row of the second.\n");
+    } else {
+        printf("\nEnter the elements of the first matrix:\n");
+        for (c = 0; c < m; c++)
+            for (d = 0; d < n; d++)
+                scanf("%d", &first[c][d]);
+
+        printf("\nEnter the elements of the second matrix:\n");
+        for (c = 0; c < p; c++)
+            for (d = 0; d < q; d++)
+                scanf("%d", &second[c][d]);
+
+        for (c = 0; c < m; c++) {
+            for (d = 0; d < q; d++) {
+                for (k = 0; k < p; k++) {
+                    sum = sum + first[c][k] * second[k][d];
+                }
+                multiply[c][d] = sum;
+                sum = 0;
+            }
+        }
+
+        printf("\nThe product of entered matrices is:\n");
+        for (c = 0; c < m; c++) {
+            for (d = 0; d < q; d++)
+                printf("%d\t", multiply[c][d]);
+            printf("\n");
+        }
+    }
+
+    return 0;
+}
+  </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the number of rows and columns of the first matrix:
+2
+2
+
+Enter the number of rows and columns of the second matrix:
+2
+2
+
+Enter the elements of the first matrix:
+1
+2
+3
+4
+
+Enter the elements of the second matrix:
+5
+6
+7
+8
+
+The product of entered matrices is:
+19      22
+43      50
+        </pre>
+    </div>
+</body>
+</html>

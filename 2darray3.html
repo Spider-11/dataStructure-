@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+            #include &lt;stdio.h&gt; 
+            #include &lt;conio.h&gt;
+
+            int main()
+            {
+                int mat[10][10], trans[10][10], i, j, m, n;
+                printf("\nEnter the number of rows and columns of matrix:\n");
+                scanf("%d%d", &m, &n);
+                printf("Enter the Matrix:\n");
+                for(i = 0; i < m; i++)
+                {
+                    for(j = 0; j < n; j++)
+                    {
+                        scanf("%d", &mat[i][j]);
+                    }
+                }
+                printf("matrix is\n");
+                for(i = 0; i < m; i++)
+                {
+                    for(j = 0; j < n; j++)
+                    {
+                        printf("%d ", mat[i][j]);
+                    }
+                    printf("\n");
+                }
+                for(i = 0; i < m; i++)
+                {
+                    for(j = 0; j < n; j++)
+                    {
+                        trans[j][i] = mat[i][j];
+                    }
+                }
+                printf("transpose matrix:\n");
+                for(i = 0; i < m; i++)
+                {
+                    for(j = 0; j < n; j++)
+                    {
+                        printf("%d ", trans[i][j]);
+                    }
+                    printf("\n");
+                }
+            }
+        </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+            Enter the number of rows and columns of matrix:
+            3
+            3
+            Enter the Matrix:
+            1
+            2
+            3
+            4
+            5
+            6
+            7
+            8
+            9
+            matrix is
+            1 2 3
+            4 5 6
+            7 8 9
+            transpose matrix:
+            1 4 7
+            2 5 8
+            3 6 9
+        </pre>
+    </div>
+</body>
+</html>

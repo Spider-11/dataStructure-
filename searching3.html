@@ -1,0 +1,74 @@
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;conio.h&gt;
+
+int linear(int ar[], int i, int item) {
+    if (i >= 10) {
+        return -1; // Base case: item not found in the array
+    }
+
+    if (ar[i] == item) {
+        return i; // Item found at index i
+    } else {
+        return linear(ar, i + 1, item); // Recursive call for the next index
+    }
+}
+
+int main() {
+    int ar[10], item, i, search;
+
+    printf("Enter the arrays\n");
+    for (i = 0; i < 10; i++) {
+        printf("Enter the array at location %d\t", i + 1);
+        scanf("%d", &ar[i]);
+    }
+
+    printf("Enter the item you want to search\n");
+    scanf("%d", &item);
+
+    search = linear(ar, 0, item);
+
+    if (search != -1) {
+        printf("Item is found at location %d\t", search + 1);
+    } else {
+        printf("Item is not in the list\n");
+    }
+
+    return 0;
+}
+
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the arrays
+Enter the array at location 1   5
+Enter the array at location 2   6
+Enter the array at location 3   4
+Enter the array at location 4   3
+Enter the array at location 5   5
+Enter the array at location 6   565
+Enter the array at location 7   32
+Enter the array at location 8   45
+Enter the array at location 9   3
+Enter the array at location 10  3
+Enter the item you want to search
+4
+Item is searched at location 3
+--------------------------------
+
+        </pre>
+    </div>
+</body>
+</html>

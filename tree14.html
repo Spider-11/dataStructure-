@@ -1,0 +1,62 @@
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;stdlib.h&gt; 
+
+struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+struct Node* newNode(int data) {
+    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+    node->data = data;
+    node->left = node->right = NULL;
+    return node;
+}
+void printPostorder(int preorder[], int size, int min, int max) {
+    static int index = 0;
+
+    if (index >= size) {
+        return;
+    }
+
+    int current = preorder[index];
+
+    if (current < min || current > max) {
+        return;
+    }
+
+    index++;
+    printPostorder(preorder, size, min, current - 1);
+    printPostorder(preorder, size, current + 1, max);
+    printf("%d ", current);
+}
+
+int main() {
+    int preorder[] = {40, 30, 35, 80, 100};
+    int size = sizeof(preorder) / sizeof(preorder[0]);
+
+    printf("Postorder traversal: ");
+    printPostorder(preorder, size, INT_MIN, INT_MAX);
+
+    return 0;
+}
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Postorder traversal: 35 30 100 80 40
+--------------------------------
+</pre>
+    </div>
+</body>
+</html>

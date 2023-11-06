@@ -1,0 +1,61 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;dos.h&gt;
+
+
+int local_maxima(int[], int);
+
+int main() {
+    int ar[5], i, max;
+
+    printf("Enter the arrays\n");
+    for (i = 0; i < 5; i++) {
+        scanf("%d", &ar[i]);
+    }
+
+    max = local_maxima(ar, 5);
+
+    for (i = 0; i < 5; i++) {
+        if (max == ar[i]) {
+            printf("\nThe local maxima is %d", ar[i]);
+        }
+    }
+}
+
+int local_maxima(int ar2[], int size) {
+    int i, maxima;
+    for (i = 0; i < size; i++) {
+        if (ar2[i] > ar2[i - 1] && ar2[i] > ar2[i + 1])
+            maxima = ar2[i];
+    }
+    return maxima;
+}
+
+
+</pre>
+</div>
+<h3>Output</h3>
+<div>
+        <pre>
+Enter the arrays
+4
+5
+4
+2
+1
+
+The local maxima is 5
+--------------------------------
+  </pre>
+    </div>
+</body>
+</html>

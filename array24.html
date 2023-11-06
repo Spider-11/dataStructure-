@@ -1,0 +1,58 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include < stdio.h >
+#include < conio.h >
+
+int main() {
+    char str[30], word[10];
+    int i, j, match = 0;
+
+    printf("Enter the string\n");
+    gets(str);
+
+    printf("Enter the word\n");
+    gets(word);
+
+    for (i = 0; str[i]; i++) {
+        for (j = 0; word[j]; j++) {
+            if (str[i + j] == word[j]) {
+                match = 1;
+                break;
+            }
+        }
+    }
+
+    if (match == 1) {
+        printf("Word is present in the list\n");
+    } else {
+        printf("Word is not present in the list\n");
+    }
+
+    return 0;
+}
+
+
+     </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the string
+hello world welcome
+Enter the word
+hello
+Enter the replaced word
+bye
+Reptaced string is bye world welcome
+--------------------------------
+ </pre>
+    </div>
+</body>
+</html>

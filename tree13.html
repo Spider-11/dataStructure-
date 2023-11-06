@@ -1,0 +1,95 @@
+
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+
+#include <stdio.h>
+
+#define MAX_NODES 100
+int data[MAX_NODES];
+int leftChild[MAX_NODES];
+int rightChild[MAX_NODES];
+
+int size = 0;
+void inOrderTraversal(int index, int k, int *count, int *kthSmallest) {
+    if (index != -1) {
+        inOrderTraversal(leftChild[index], k, count, kthSmallest);
+        (*count)++;
+        if (*count == k) {
+            *kthSmallest = data[index];
+            return;
+        }
+        inOrderTraversal(rightChild[index], k, count, kthSmallest);
+    }
+}
+
+int findKthSmallest(int k) {
+    int count = 0;
+    int kthSmallest = -1;
+    inOrderTraversal(0, k, &count, &kthSmallest);
+
+    return kthSmallest;
+}
+
+int main() {
+    size = 7; 
+    data[0] = 50;
+    leftChild[0] = 1;
+    rightChild[0] = 2;
+
+    data[1] = 30;
+    leftChild[1] = 3;
+    rightChild[1] = 4;
+
+    data[2] = 70;
+    leftChild[2] = 5;
+    rightChild[2] = 6;
+
+    data[3] = 20;
+    leftChild[3] = -1;
+    rightChild[3] = -1; 
+
+    data[4] = 40;
+    leftChild[4] = -1;
+    rightChild[4] = -1;
+
+    data[5] = 60;
+    leftChild[5] = -1;
+    rightChild[5] = -1;
+
+    data[6] = 80;
+    leftChild[6] = -1;
+    rightChild[6] = -1;
+
+    int k = 3; 
+
+    int kthSmallest = findKthSmallest(k);
+
+    if (kthSmallest != -1) {
+        printf("The %dth smallest element in the BST is: %d\n", k, kthSmallest);
+    } else {
+        printf("The %dth smallest element is not present in the BST\n", k);
+    }
+
+    return 0;
+}
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+The 3th smallest element in the BST is: 40
+
+--------------------------------
+</pre>
+    </div>
+</body>
+</html>

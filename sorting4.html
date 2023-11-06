@@ -1,0 +1,75 @@
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+
+
+int bubbleSort(int ar[], int size, int index) {
+    if (index == size - 1) {
+        return 0;
+    }
+    int j;
+    for (j = 0; j < size - index - 1; j++) {
+        if (ar[j] > ar[j + 1]) {
+            int temp = ar[j];
+            ar[j] = ar[j + 1];
+            ar[j + 1] = temp;
+         
+        }
+    }
+
+    return bubbleSort(ar, size, index + 1);
+}
+int main() {
+    int ar[10], i, step = 0;
+    printf("Enter the arrays\n");
+    for (i = 0; i < 10; i++) {
+        scanf("%d", &ar[i]);
+    }
+    step = bubbleSort(ar, 10, 0);
+    printf("Sorted Arrays are\n");
+    for (i = 0; i < 10; i++) {
+        printf("%d\n", ar[i]);
+    }
+}
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the arrays
+4
+7
+5
+9
+55
+233
+76
+44
+76
+76
+Sorted Arrays are
+4
+5
+7
+9
+44
+55
+76
+76
+76
+233
+
+--------------------------------        </pre>
+    </div>
+</body>
+</html>

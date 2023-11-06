@@ -1,0 +1,200 @@
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#define MAX_SIZE 10
+int stack[MAX_SIZE];
+int top = -1;
+void push(int value) {
+    if (top == MAX_SIZE - 1) {
+        printf("Stack Overflow: The stack is full.\n");
+    } else {
+        stack[++top] = value;
+        printf("Pushed %d onto the stack.\n", value);
+    }
+}
+int pop() {
+    if (top == -1) {
+        printf("Stack Underflow: The stack is empty.\n");
+        return -1; 
+    } else {
+        int poppedValue = stack[top];
+        printf("Popped %d from the stack.\n", poppedValue);
+        return poppedValue;
+        top--;
+    }
+}
+int peek() {
+    if (top == -1) {
+        printf("Stack is empty. No element to peek.\n");
+        return -1;
+    } else {
+        return stack[top];
+    }
+}
+int isEmpty() {
+    return top == -1;
+}
+int isFull() {
+    return top == MAX_SIZE - 1;
+}
+int main() {
+    int choice, value;
+
+    do {
+        printf("\nStack Operations:\n");
+        printf("1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Peek\n");
+        printf("4. Check if Empty\n");
+        printf("5. Check if Full\n");
+        printf("0. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter the value to push onto the stack: ");
+                scanf("%d", &value);
+                push(value);
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                printf("Top element: %d\n", peek());
+                break;
+            case 4:
+                printf("Is the stack empty? %s\n", isEmpty() ? "Yes" : "No");
+                break;
+            case 5:
+                printf("Is the stack full? %s\n", isFull() ? "Yes" : "No");
+                break;
+            case 0:
+                printf("Exiting the program.\n");
+                break;
+            default:
+                printf("Invalid choice. Please enter a valid option.\n");
+        }
+    } while (choice != 0);
+
+    return 0;
+}
+
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+
+
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Check if Empty
+5. Check if Full
+0. Exit
+Enter your choice: 1
+Enter the value to push onto the stack: 34
+Pushed 34 onto the stack.
+
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Check if Empty
+5. Check if Full
+0. Exit
+Enter your choice: 1
+Enter the value to push onto the stack: 34
+Pushed 34 onto the stack.
+
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Check if Empty
+5. Check if Full
+0. Exit
+Enter your choice: 1
+Enter the value to push onto the stack: 23
+Pushed 23 onto the stack.
+
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Check if Empty
+5. Check if Full
+0. Exit
+Enter your choice: 1
+Enter the value to push onto the stack: 54
+Pushed 54 onto the stack.
+
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Check if Empty
+5. Check if Full
+0. Exit
+Enter your choice: 3
+Top element: 54
+
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Check if Empty
+5. Check if Full
+0. Exit
+Enter your choice: 2
+Popped 54 from the stack.
+
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Check if Empty
+5. Check if Full
+0. Exit
+Enter your choice: 4
+Is the stack empty? No
+
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Check if Empty
+5. Check if Full
+0. Exit
+Enter your choice: 5
+Is the stack full? No
+
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Check if Empty
+5. Check if Full
+0. Exit
+Enter your choice: 0
+Exiting the program.
+
+--------------------------------
+        </pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include < stdio.h >
+
+int stringLength(char str[]) {
+    int length = 0;
+    while (str[length] != '\0') {
+        length++;
+    }
+    return length;
+}
+void swap(char str[], int i, int j) {
+    char temp = str[i];
+    str[i] = str[j];
+    str[j] = temp;
+}
+void permuteAndPrint(char str[], int start, int end) {
+    if (start == end) {
+        printf("%s\n", str);
+    } else {
+        for (int i = start; i <= end; i++) {
+            swap(str, start, i);
+            permuteAndPrint(str, start + 1, end);
+            swap(str, start, i); 
+        }
+    }
+}
+int main() {
+    char str[1000]; 
+    printf("Enter a string: ");
+    scanf("%s", str);
+    int length = stringLength(str);
+    printf("All possible permutations of the string:\n");
+    permuteAndPrint(str, 0, length - 1);
+    return 0;
+}
+
+     </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+
+Enter a string: 1234
+All possible permutations of the string:
+1234
+1243
+1324
+1342
+1432
+1423
+2134
+2143
+2314
+2341
+2431
+2413
+3214
+3241
+3124
+3142
+3412
+3421
+4231
+4213
+4321
+4312
+4132
+4123
+
+--------------------------------
+ </pre>
+    </div>
+</body>
+</html>

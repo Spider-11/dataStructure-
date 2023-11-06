@@ -1,0 +1,62 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;
+#include <stdio.h>
+int main() {
+    int n;
+    printf("Enter the number of elements in the arrays: ");
+    scanf("%d", &n);
+    int arr1[n], arr2[n];
+    printf("Enter %d elements for the first array:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr1[i]);
+    }
+    printf("Enter %d elements for the second array:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr2[i]);
+    }
+    int areSame = 1;
+    for (int i = 0; i < n; i++) {
+        if (arr1[i] != arr2[i]) {
+            areSame = 0;
+            break; 
+        }
+    }
+    if (areSame==1) {
+        printf("The arrays are the same.\n");
+    } else {
+        printf("The arrays are not the same.\n");
+    }
+
+    return 0;
+}
+
+</pre>
+</div>
+<h3>Output</h3>
+<div>
+        <pre>
+Enter the number of elements in the arrays: 4
+Enter 4 elements for the first array:
+1
+2
+3
+4
+Enter 4 elements for the second array:
+1
+2
+3
+5
+The arrays are not the same.
+
+--------------------------------
+  </pre>
+    </div>
+</body>
+</html>

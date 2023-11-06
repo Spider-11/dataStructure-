@@ -1,0 +1,72 @@
+
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;
+
+
+
+void main()
+{
+    int n=10,arr[10],i,left[10],right[10],min,water;
+    for ( i = 0; i < 10; i++)
+    {
+        printf("Enter value at %d position\n",i+1);
+        scanf("%d",&arr[i]);
+    }
+   left[0]=arr[0];
+   for ( i = 1; i < 10; i++)
+   {
+     if(left[i-1] < arr[i])
+        left[i]=arr[i];
+     
+     else
+     left[i]=left[i-1];
+   }
+   right[n-1]=arr[n-1];
+   for(i=n-1;i > =0;i--)
+   {
+    if(right[i+1] < arr[i])
+    right[i]=arr[i];
+    else
+    right[i]=right[i+1];
+   }
+  int ans=0;
+  for ( i = 0; i < n; i++)
+  {
+    if(left[i] < right[i])
+    min=left[i];
+    else
+    min=right[i];
+    water=min-arr[i];
+    ans+=water;
+  }
+  printf("tapped water %d",ans);
+  
+}
+</pre>
+</div>
+<h3>Output</h3>
+<div>
+        <pre>
+Enter value at 1 position
+5
+Enter value at 2 position
+6
+Enter value at 3 position
+7
+Enter value at 4 position
+3
+Enter value at 5 position
+4
+tapped water 6
+--------------------------------
+  </pre>
+    </div>
+</body>
+</html>

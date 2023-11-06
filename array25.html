@@ -1,0 +1,49 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include < stdio.h >
+void trimSpaces(char str[]) {
+    int start = 0, end = 0, length = 0,i;
+    while (str[start] == ' ' || str[start] == '\t' || str[start] == '\n') {
+	start++;
+    }
+    while (str[end] != '\0') {
+	length++;
+	end++;
+    }
+    end--;
+    while (str[end] == ' ' || str[end] == '\t' || str[end] == '\n') {
+	end--;
+    }
+    for ( i = 0; i < length; i++) {
+	str[i] = str[start + i];
+    }
+    str[length - (start + length - end)] = '\0';
+}
+int main() {
+    char str[1000];
+    printf("Enter a string: ");
+    gets(str);
+    trimSpaces(str);
+    printf("Trimmed string: %s\n", str);
+    return 0;
+}
+
+     </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+Enter a string:                hello
+Trimmed string: hello     
+
+--------------------------------
+ </pre>
+    </div>
+</body>
+</html>

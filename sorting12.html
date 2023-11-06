@@ -1,0 +1,78 @@
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;string.h&gt; 
+
+int selectionSortRecursive(char ar[][100], int size, int index) {
+    if (index == size - 1) {
+        return 0;
+    }
+    int j;
+    for (j = index + 1; j < size; j++) {
+        if (strcmp(ar[index], ar[j]) > 0) {
+            char temp[100];
+            strcpy(temp, ar[index]);
+            strcpy(ar[index], ar[j]);
+            strcpy(ar[j], temp);
+        }
+    }
+    return  selectionSortRecursive(ar, size, index + 1);
+}
+int main() {
+    char ar[10][100];
+    int i, step = 0;
+    printf("Enter the strings\n");
+    for (i = 0; i < 10; i++) {
+        scanf("%s", ar[i]);
+    }
+   
+    step = selectionSortRecursive(ar, 10, 0);
+  printf("Sorted Strings are\n");
+    for (i = 0; i < 10; i++) {
+        printf("%s\n", ar[i]);
+    }
+
+ 
+}
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the strings
+re
+er
+fd
+tty
+wd
+tr
+we
+ddf
+vr
+ef
+Sorted Strings are
+ddf
+ef
+er
+fd
+re
+tr
+tty
+vr
+wd
+we
+
+--------------------------------  </pre>
+    </div>
+</body>
+</html>

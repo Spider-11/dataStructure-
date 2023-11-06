@@ -1,0 +1,119 @@
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;  
+void swap(int arr[], int a, int b) {
+    int temp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = temp;
+}
+int partition(int arr[], int low, int high) {
+    int pivot = arr[low];
+    int left = low + 1;
+    int right = high;
+
+    while (1) {
+        while (left <= right && arr[left] <= pivot)
+            left++;
+
+        while (arr[right] >= pivot && right >= left)
+            right--;
+
+        if (right < left)
+            break;
+
+        swap(arr, left, right);
+    }
+
+    swap(arr, low, right);
+    return right;
+}
+
+void quicksort(int arr[], int low, int high) {
+    int stack[10];
+    int top = -1, pivot;
+
+    stack[++top] = low;
+    stack[++top] = high;
+
+    while (top >= 0) {
+        high = stack[top--];
+        low = stack[top--];
+
+        pivot = partition(arr, low, high);
+
+        if (pivot - 1 > low) {
+            stack[++top] = low;
+            stack[++top] = pivot - 1;
+        }
+
+        if (pivot + 1 < high) {
+            stack[++top] = pivot + 1;
+            stack[++top] = high;
+        }
+    }
+}
+
+int main() {
+    int arr[10], i;
+
+    printf("Enter the array elements:\n");
+    for (i = 0; i < 10; i++) {
+        printf("Enter the element at location %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+    
+    quicksort(arr, 0, 9);
+
+
+    printf("Sorted array:\n");
+    for (i = 0; i < 10; i++) {
+        printf("%d\n", arr[i]);
+    }
+
+
+    return 0;
+}
+
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the array elements:
+Enter the element at location 1: 5
+Enter the element at location 2: 8
+Enter the element at location 3: 32
+Enter the element at location 4: 5
+Enter the element at location 5: 78
+Enter the element at location 6: 23
+Enter the element at location 7: 76
+Enter the element at location 8: 23
+Enter the element at location 9: 12
+Enter the element at location 10: 25
+Sorted array:
+5
+5
+8
+12
+23
+23
+25
+32
+76
+78
+
+--------------------------------
+ </pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+   #include &lt;stdio.h&gt;
+int main()
+{
+	int a[5],b[5],i;
+	printf("Enter the array\n");
+	for(i=0;i<5;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	for(i=0;i<5;i++)
+	{
+		b[i]=a[i];
+	}
+	printf("Array is\n");
+	for(i=0;i<5;i++)
+	{
+		printf("%d\n",a[i]);
+	}
+	printf("copied array\n");
+	for(i=0;i<5;i++)
+	{
+		printf("%d\n",b[i]);
+	}
+}
+        </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the array
+3
+8
+9
+5
+6
+Array is
+3
+8
+9
+5
+6
+copied array
+3
+8
+9
+5
+6
+
+--------------------------------
+        </pre>
+    </div>
+</body>
+</html>

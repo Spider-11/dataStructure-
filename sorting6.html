@@ -1,0 +1,77 @@
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+int insertionSortRecursive(int ar[], int size, int index) {
+    if (index >= size) {
+        return 0;
+    }
+    int step = 0;
+    int key = ar[index];
+    int j = index - 1;
+
+    while (j >= 0 && ar[j] > key) {
+        ar[j + 1] = ar[j];
+        j--;
+        step++;
+    }
+    ar[j + 1] = key;
+    return step + insertionSortRecursive(ar, size, index + 1);
+}
+int main() {
+    int ar[10], i, step = 0;
+   
+    printf("Enter the arrays\n");
+    for (i = 0; i < 10; i++) {
+        scanf("%d", &ar[i]);
+    }
+   
+    step = insertionSortRecursive(ar, 10, 1);
+    
+    printf("Sorted Arrays are\n");
+    for (i = 0; i < 10; i++) {
+        printf("%d\n", ar[i]);
+    }
+
+}
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the arrays
+34
+76
+4
+58
+2
+3
+5
+67
+45
+45
+Sorted Arrays are
+2
+3
+4
+5
+34
+45
+45
+58
+67
+76
+
+--------------------------------       </pre>
+    </div>
+</body>
+</html>

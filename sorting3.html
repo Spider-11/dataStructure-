@@ -1,0 +1,87 @@
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+
+
+void bubble(int ar[], int size) {
+    int i, j, temp;
+    for (i = 1; i < size; i++) {
+        for (j = 0; j < size - i; j++) {
+            if (ar[j] > ar[j + 1]) {
+                temp = ar[j];
+                ar[j] = ar[j + 1];
+                ar[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int ar[10], i;
+    clock_t start, end;
+    double cpu_time;
+
+    printf("Enter the arrays\n");
+    for (i = 0; i < 10; i++) {
+        printf("Enter the array at location %d: ", i + 1);
+        scanf("%d", &ar[i]);
+    }
+
+    start = clock();
+    bubble(ar, 10);
+    end = clock();
+
+    printf("Sorted Arrays are\n");
+    for (i = 0; i < 10; i++) {
+        printf("%d\n", ar[i]);
+    }
+
+    cpu_time = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("Time taken by bubble sort: %f seconds\n", cpu_time);
+
+    return 0;
+}
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the arrays
+Enter the array at location 1: 4
+Enter the array at location 2: 34
+Enter the array at location 3: 64
+Enter the array at location 4: 32
+Enter the array at location 5: 7
+Enter the array at location 6: 8
+Enter the array at location 7: 3
+Enter the array at location 8: 23
+Enter the array at location 9: 45
+Enter the array at location 10: 2
+Sorted Arrays are
+2
+3
+4
+7
+8
+23
+32
+34
+45
+64
+Time taken by bubble sort: 0.000000 seconds
+
+--------------------------------
+ </pre>
+    </div>
+</body>
+</html>

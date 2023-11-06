@@ -1,0 +1,102 @@
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;stdlib.h&gt; 
+
+void push(int item, int *top, char stack[], int size) {
+    if (*top == size - 1) {
+        printf("Stack overflow\n");
+    } else {
+        stack[++(*top)] = item;
+    }
+}
+
+int pop(int *top, char stack[]) {
+    if (*top == -1) {
+        printf("Stack underflow\n");
+        return -1;
+    } else {
+        return stack[(*top)--];
+    }
+}
+
+char isOperator(char c) {
+    return (c == '+' || c == '-' || c == '*' || c == '/');
+}
+
+int performOperation(int operand1, int operand2, char operator) {
+    switch (operator) {
+        case '+':
+            return operand1 + operand2;
+        case '-':
+            return operand1 - operand2;
+        case '*':
+            return operand1 * operand2;
+        case '/':
+            if (operand2 == 0) {
+                printf("Division by zero\n");
+                exit(1);
+            }
+            return operand1 / operand2;
+        default:
+            printf("Invalid operator: %c\n", operator);
+            exit(1);
+    }
+    return -1;
+}
+
+int evaluatePrefix(char prefix[]) {
+    int i, len, top = -1;
+    char c, stack[20];
+    len = strlen(prefix);
+    for (i = len - 1; i >= 0; i--) {
+        c = prefix[i];
+
+        if (isdigit(c)) {
+            push(c - '0', &top, stack, 19); 
+          } else if (isOperator(c)) {
+            int operand1 = pop(&top, stack);
+            int operand2 = pop(&top, stack);
+            int result = performOperation(operand1, operand2, c);
+            push(result, &top, stack, 19);
+        }
+    }
+    return pop(&top, stack);
+}
+
+int main() {
+    char prefix[20];
+    int result;
+    int top = -1;
+    char stack[20];
+    printf("Enter a prefix expression: ");
+    scanf("%s", prefix);
+    result = evaluatePrefix(prefix);
+    printf("Result: %d\n", result);
+
+    return 0;
+}
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter a prefix expression: +5*34
+Result: 17
+
+------------------------------
+
+</pre>
+    </div>
+</body>
+</html>

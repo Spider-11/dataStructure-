@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <h3>Code></h3>
+    <div id="div4">
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+struct que {
+    int data;
+    int priority;
+    struct que* next;
+};
+struct que* rear = NULL;
+struct que* front = NULL;
+
+int count = 0;
+
+void insert() {
+    struct que* newnode = (struct que*) malloc(sizeof(struct que));
+    printf("Enter the data: ");
+    scanf("%d", &(newnode->data));
+    printf("Enter the priority: ");
+    scanf("%d", &(newnode->priority));
+    newnode->next = NULL;
+
+    if (rear == NULL) {
+	rear = front = newnode;
+    } else {
+	if (newnode->priority > rear->priority) {
+	    newnode->next = front;
+	    front = newnode;
+	} else {
+	    while (rear->next != NULL && newnode->priority <= rear->priority) {
+		rear = rear->next;
+	    }
+	    rear->next = newnode;
+	}
+    }
+    count++;
+    printf("Data %d with priority %d is inserted.\n", newnode->data, newnode->priority);
+}
+
+void del() {
+    if (front == NULL) {
+	printf("Queue is empty\n");
+    } else {
+	struct que* temp = front;
+	printf("Deleted data in queue is %d with priority %d\n",temp->data,temp->priority);
+	    front = front->next;
+	free(temp);
+	count--;
+    }
+}
+
+void peek() {
+    if (rear == NULL) {
+	printf("Queue is empty\n");
+    } else {
+	printf("Top element in the queue is %d with priority %d\n", rear->data, rear->priority);
+    }
+}
+
+void isempty() {
+    if (rear == NULL) {
+	printf("Queue is empty\n");
+    } else {
+	printf("Queue is not empty\n");
+    }
+}
+
+void isfull() {
+    printf("Queue is not full\n");
+}
+
+int main() {
+    int ch;
+    while (1) {
+	printf("\n1. Insert\n");
+	printf("2. Delete\n");
+	printf("3. Peek\n");
+	printf("4. Is empty\n");
+	printf("5. Is full\n");
+	printf("6. Total nodes\n");
+	printf("7. Exit\n");
+	printf("Enter your choice: ");
+	scanf("%d", &ch);
+	switch (ch) {
+	    case 1:
+		insert();
+		break;
+	    case 2:
+		del();
+		break;
+	    case 3:
+		peek();
+		break;
+	    case 4:
+		isempty();
+		break;
+	    case 5:
+		isfull();
+		break;
+	    case 6:
+		printf("Total nodes in queue is %d\n", count);
+		break;
+	    case 7:
+		exit(1);
+	    default:
+		printf("Enter a valid number\n");
+	}
+    }
+   }
+
+</pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+<pre>
+
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 1
+    Enter the data: 4
+    Enter the priority: 2
+    Data 4 with priority 2 is inserted.
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 1
+    Enter the data: 5
+    Enter the priority: 6
+    Data 5 with priority 6 is inserted.
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 1
+    Enter the data: 3
+    Enter the priority: 7
+    Data 3 with priority 7 is inserted.
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 1
+    Enter the data: 8
+    Enter the priority: 8
+    Data 8 with priority 8 is inserted.
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 1
+    Enter the data: 4
+    Enter the priority: 1
+    Data 4 with priority 1 is inserted.
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 5
+    Queue is not full
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 6
+    Total nodes in queue is 5
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 3
+    Top element in the queue is 4 with priority 2
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 2
+    Deleted data in queue is 8 with priority 8
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 2
+    Deleted data in queue is 3 with priority 7
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 2
+    Deleted data in queue is 5 with priority 6
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 2
+    Deleted data in queue is 4 with priority 2
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 2
+    Deleted data in queue is 4 with priority 1
+    
+    1. Insert
+    2. Delete
+    3. Peek
+    4. Is empty
+    5. Is full
+    6. Total nodes
+    7. Exit
+    Enter your choice: 2
+    Queue is empty
+    
+</pre>
+    </div>
+</body>
+</html>

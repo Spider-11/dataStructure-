@@ -1,0 +1,62 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;
+#include <stdio.h>
+int isPalindrome(int num) {
+    int originalNum = num;
+    int reverse = 0;
+    while (num > 0) {
+        int digit = num % 10;
+        reverse = reverse * 10 + digit;
+        num /= 10;
+    }
+    return (originalNum == reverse);
+}
+int main() {
+    int n;
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    printf("Palindrome numbers in the array are:\n");
+    for (int i = 0; i < n; i++) {
+        if (isPalindrome(arr[i])) {
+            printf("%d\n", arr[i]);
+        }
+    }
+    return 0;
+}
+
+
+</pre>
+</div>
+<h3>Output</h3>
+<div>
+        <pre>
+Enter the number of elements in the array: 5
+Enter 5 elements:
+323
+22221
+232
+11211
+232
+Palindrome numbers in the array are:
+323
+232
+11211
+232
+
+--------------------------------
+  </pre>
+    </div>
+</body>
+</html>

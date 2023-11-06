@@ -1,0 +1,68 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt;
+int main (){
+   int num[20];
+   int i, j, a, n,k,min;
+   printf("enter number of elements in an array");
+   scanf("%d", &n);
+   printf("Enter the elements");
+   for (i = 0; i < n; ++i)
+      scanf("%d", &num[i]);
+   for (i = 0; i < n; ++i){
+      for (j = i + 1; j < n; ++j){
+         if (num[i] > num[j]){
+            a = num[i];
+            num[i] = num[j];
+            num[j] = a;
+         }
+      }
+   }
+  
+    for ( i = 0; i < n; i++) {
+        if (num[i] != 0) {
+            for (j = i + 1; j < n; j++) {
+                if (num[j] == num[i]) {
+                    num[j] = 0;
+                }
+            }
+        }
+    }
+   
+   printf("Enter the k-th smallest value you want to print:");
+   scanf("%d",&k);
+   for(i=0;i < n;i++)
+   {
+       min=i;
+	   if(min == k-1)
+	   {
+	   	printf("%d",num[i]);
+				}         
+    }
+   }
+
+        </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+enter number of elements in an array6
+Enter the elements23
+54
+65
+34
+23
+65
+Enter the k-th smallest value you want to print:4
+54
+--------------------------------      
+  </pre>
+    </div>
+</body>
+</html>

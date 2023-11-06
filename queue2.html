@@ -1,0 +1,205 @@
+
+
+
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+#include &lt;stdlib.h&gt; 
+#include &lt;string.h&gt; 
+
+
+void sort(char[][30]);
+
+int rear = -1;
+
+int insert(char que[][30], int front) {
+    char str[30];
+    if (rear == 29) {
+        printf("Queue is full\n");
+    } else if (rear == -1 && front == -1) {
+        front = rear = 0;
+        printf("Enter the string\n");
+        scanf("%s", str);
+        strcpy(que[rear], str);
+    } else {
+        rear++;
+        printf("Enter the string\n");
+        scanf("%s", str);
+        strcpy(que[rear], str);
+    }
+    return front;
+}
+
+int del(char que[][30], int front) {
+    char str[30];
+    if (front == -1) {
+        printf("Queue is empty\n");
+    } else if (front == rear) {
+        strcpy(str, que[front]);
+        printf("Delete string is %s\n", str);
+        front = rear = -1;
+    } else {
+        strcpy(str, que[front]);
+        printf("Delete string is %s\n", str);
+        front++;
+    }
+    return front;
+}
+
+void peek(char que[][30]) {
+    char str[30];
+    if (rear == -1) {
+        printf("Queue is empty\n");
+    } else {
+        strcpy(str, que[rear]);
+        printf("Top string in queue is %s\n", str);
+    }
+}
+
+void isempty(int front) {
+    if (front == -1 || front > rear) {
+        printf("Queue is empty\n");
+    } else {
+        printf("Queue is not empty\n");
+    }
+}
+
+void isfull(int size) {
+    if (rear == size - 1) {
+        printf("Queue is full\n");
+    } else {
+        printf("Queue is not full\n");
+    }
+}
+
+int main() {
+    int front = -1, ch;
+    char que[30][30];
+    while (1) {
+        printf("1. Insert\n");
+        printf("2. Delete\n");
+        printf("3. Peek\n");
+        printf("4. isempty\n");
+        printf("5. Isfull\n");
+        printf("6. Exit\n");
+        printf("Enter your choice\n");
+        scanf("%d", &ch);
+        switch (ch) {
+            case 1:
+                front = insert(que, front);
+                break;
+            case 2:
+                front = del(que, front);
+                break;
+            case 3:
+                peek(que);
+                break;
+            case 4:
+                isempty(front);
+                break;
+            case 5:
+                isfull(29);
+                break;
+            case 6:
+                exit(0);
+            default:
+                printf("Enter a valid number\n");
+        }
+    }
+    return 0;
+}
+
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+1. Insert
+2. Delete
+3. Peek
+4. isempty
+5. Isfull
+6. Exit
+Enter your choice
+1
+Enter the string
+hello
+1. Insert
+2. Delete
+3. Peek
+4. isempty
+5. Isfull
+6. Exit
+Enter your choice
+1
+Enter the string
+bye
+1. Insert
+2. Delete
+3. Peek
+4. isempty
+5. Isfull
+6. Exit
+Enter your choice
+1
+Enter the string
+nikle
+1. Insert
+2. Delete
+3. Peek
+4. isempty
+5. Isfull
+6. Exit
+Enter your choice
+2
+Delete string is hello
+1. Insert
+2. Delete
+3. Peek
+4. isempty
+5. Isfull
+6. Exit
+Enter your choice
+3
+Top string in queue is nikle
+1. Insert
+2. Delete
+3. Peek
+4. isempty
+5. Isfull
+6. Exit
+Enter your choice
+4
+Queue is not empty
+1. Insert
+2. Delete
+3. Peek
+4. isempty
+5. Isfull
+6. Exit
+Enter your choice
+5
+Queue is not full
+1. Insert
+2. Delete
+3. Peek
+4. isempty
+5. Isfull
+6. Exit
+Enter your choice
+6
+
+--------------------------------
+    </div>
+</body>
+</html>

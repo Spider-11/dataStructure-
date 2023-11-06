@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+ #include<stdio.h>
+int main()
+{
+	int first[3][3],number;
+    int result[3][3];
+	int i,j;
+	printf("Enter the element of the first matrix:\n ");
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			scanf("%d",&first[i][j]);
+		}
+	}
+	printf("enter the  number by which you want to multiply the matrix:");
+	scanf("%d",&number);
+
+		for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			result[i][j]=number * first[i][j];
+		}
+	}
+	
+	printf("Sum of two matrix is:\n");
+		for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			printf("%d\t",result[i][j]);
+		}
+	}
+	
+}
+        </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter the element of the first matrix:
+ 1
+2
+3
+4
+5
+6
+7
+8
+9
+enter the  number by which you want to multiply the matrix:5
+Sum of two matrix is:
+5       10      15      20      25      30      35      40      45
+        </pre>
+    </div>
+</body>
+</html>

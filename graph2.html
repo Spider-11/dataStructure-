@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Code</h3>
+    <div id="div4">
+<pre>
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+struct edge {
+    int item;
+    struct edge* link;
+};
+
+struct vertex {
+    int data;
+    struct vertex* link;
+    struct edge* next;
+};
+
+struct vertex* createVertex(int data) {
+    struct vertex* newNode = (struct vertex*)malloc(sizeof(struct vertex));
+    newNode->data = data;
+    newNode->link = NULL;
+    newNode->next = NULL;
+    return newNode;
+}
+
+struct edge* createEdge(int item) {
+    struct edge* newEdge = (struct edge*)malloc(sizeof(struct edge));
+    newEdge->item = item;
+    newEdge->link = NULL;
+    return newEdge;
+}
+
+void insertVertex(struct vertex** graph, int data) {
+    struct vertex* newNode = createVertex(data);
+    newNode->link = *graph;
+    *graph = newNode;
+}
+
+void insertEdge(struct vertex* graph, int from, int to) {
+    struct vertex* fromVertex = NULL;
+    struct edge* newEdge = createEdge(to);
+
+    while (graph != NULL) {
+        if (graph->data == from) {
+            fromVertex = graph;
+            break;
+        }
+        graph = graph->link;
+    }
+
+    if (fromVertex != NULL) {
+        newEdge->link = fromVertex->next;
+        fromVertex->next = newEdge;
+    } else {
+        printf("Vertex %d not found.\n", from);
+    }
+}
+
+void deleteVertex(struct vertex** graph, int data) {
+    struct vertex* current = *graph;
+    struct vertex* prev = NULL;
+
+    while (current != NULL) {
+        if (current->data == data) {
+            struct edge* edgeToDelete = current->next;
+            while (edgeToDelete != NULL) {
+                struct edge* temp = edgeToDelete;
+                edgeToDelete = edgeToDelete->link;
+                free(temp);
+            }
+
+            if (prev == NULL) {
+                *graph = current->link;
+            } else {
+                prev->link = current->link;
+            }
+            free(current);
+            return;
+        }
+        prev = current;
+        current = current->link;
+    }
+}
+
+void deleteEdge(struct vertex* graph, int from, int to) {
+    struct vertex* fromVertex = NULL;
+    struct edge* current = NULL;
+    struct edge* prev = NULL;
+
+    while (graph != NULL) {
+        if (graph->data == from) {
+            fromVertex = graph;
+            current = fromVertex->next;
+            break;
+        }
+        graph = graph->link;
+    }
+
+    if (fromVertex != NULL) {
+        while (current != NULL) {
+            if (current->item == to) {
+                if (prev == NULL) {
+                    fromVertex->next = current->link;
+                } else {
+                    prev->link = current->link;
+                }
+                free(current);
+                return;
+            }
+            prev = current;
+            current = current->link;
+        }
+    } else {
+        printf("Vertex %d not found.\n", from);
+    }
+}
+
+void printGraph(struct vertex* graph) {
+    while (graph != NULL) {
+        printf("Vertex %d: ", graph->data);
+        struct edge* edges = graph->next;
+        while (edges != NULL) {
+            printf("%d ", edges->item);
+            edges = edges->link;
+        }
+        printf("\n");
+        graph = graph->link;
+    }
+}
+
+int main() {
+    struct vertex* graph = NULL;
+
+    insertVertex(&graph, 1);
+    insertVertex(&graph, 2);
+    insertVertex(&graph, 3);
+    insertVertex(&graph, 4);
+
+    insertEdge(graph, 1, 2);
+    insertEdge(graph, 1, 3);
+    insertEdge(graph, 2, 3);
+    insertEdge(graph, 3, 4);
+
+    printf("Graph (before deletion):\n");
+    printGraph(graph);
+    deleteVertex(&graph, 2);
+    deleteEdge(graph, 3, 4);
+
+    printf("\nGraph (after deletion):\n");
+    printGraph(graph);
+}
+
+</pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+<pre>
+    Graph (before deletion):
+    Vertex 4:
+    Vertex 3: 4
+    Vertex 2: 3
+    Vertex 1: 3 2
+    
+    Graph (after deletion):
+    Vertex 4:
+    Vertex 3:
+    Vertex 1: 3 2
+    
+</pre>
+    </div>
+</body>
+</html>

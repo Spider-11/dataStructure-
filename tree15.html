@@ -1,0 +1,91 @@
+
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+
+
+
+#define MAX_NODES 100
+int data[MAX_NODES];
+int leftChild[MAX_NODES];
+int rightChild[MAX_NODES];
+
+int size = 0;
+void newNode(int value, int left, int right) {
+    if (size < MAX_NODES) {
+        data[size] = value;
+        leftChild[size] = left;
+        rightChild[size] = right;
+        size++;
+    } else {
+        printf("Error: Maximum number of nodes reached.\n");
+    }
+}
+int constructBST(int preorder[], int n) {
+    int stack[MAX_NODES];
+	int i; 
+    int top = -1; 
+
+    int root = 0;  
+    newNode(preorder[root], -1, -1); 
+
+    for (i = 1; i < n; i++) {
+        int lastPopped = -1;
+
+        while (top >= 0 && preorder[i] > preorder[stack[top]]) {
+            lastPopped = stack[top];
+            top--;
+        }
+        if (lastPopped != -1) {
+            newNode(preorder[i], -1, rightChild[lastPopped]);
+            rightChild[lastPopped] = size - 1;
+        } else {
+            newNode(preorder[i], leftChild[root], -1);
+            leftChild[root] = size - 1;
+        }
+
+        stack[++top] = i;
+    }
+
+    return root;
+}
+void inOrderTraversal(int root) {
+    if (root != -1) {
+        inOrderTraversal(leftChild[root]);
+        printf("%d ", data[root]);
+        inOrderTraversal(rightChild[root]);
+    }
+}
+
+int main() {
+    int preorder[] = {10, 5, 1, 7, 40, 50};
+    int n = sizeof(preorder) / sizeof(preorder[0]);
+
+    int root = constructBST(preorder, n);
+
+    printf("In-order traversal of constructed BST: ");
+    inOrderTraversal(root);
+    printf("\n");
+
+    return 0;
+}
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+In-order traversal of constructed BST: 5 7 40 50 1 10
+
+--------------------------------
+</pre>
+    </div>
+</body>
+</html>

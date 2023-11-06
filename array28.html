@@ -1,0 +1,168 @@
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include < stdio.h >
+
+#include < string.h >
+struct DictionaryEntry {
+    char word[50];
+    char meaning[100];
+};
+int createEntry(struct DictionaryEntry dictionary[], int size) {
+    char word[50], meaning[100];
+    if (size < 10) {
+        printf("Enter the word: ");
+        scanf("%s", word);
+        printf("Enter the meaning: ");
+        scanf(" %[^\n]", meaning);
+
+        strcpy(dictionary[size].word, word);
+        strcpy(dictionary[size].meaning, meaning);
+        size++;
+        printf("Entry created successfully!\n");
+    } else {
+        printf("Dictionary is full. Cannot add more entries.\n");
+    }
+    return size;
+}
+int deleteEntry(struct DictionaryEntry dictionary[], int size) {
+    char word[50];
+    int i, found = 0;
+    printf("Enter the word to delete: ");
+    scanf("%s", word);
+    for (i = 0; i < size; i++) {
+        if (strcmp(dictionary[i].word, word) == 0) {
+            found = 1;
+            break;
+        }
+    }
+    if (found) {
+        for (; i < size - 1; i++) {
+            strcpy(dictionary[i].word, dictionary[i + 1].word);
+            strcpy(dictionary[i].meaning, dictionary[i + 1].meaning);
+        }
+        size--;
+        printf("Entry deleted successfully!\n");
+    } else {
+        printf("Word not found in the dictionary.\n");
+    }
+    return size;
+}
+void searchEntry(struct DictionaryEntry dictionary[], int size) {
+    char word[50];
+    int i, found = 0;
+    printf("Enter the word to search: ");
+    scanf("%s", word);
+    for (i = 0; i < size; i++) {
+        if (strcmp(dictionary[i].word, word) == 0) {
+            found = 1;
+            printf("Word: %s\nMeaning: %s\n", dictionary[i].word, dictionary[i].meaning);
+            break;
+        }
+    }
+    if (!found) {
+        printf("Word not found in the dictionary.\n");
+    }
+}
+int main() {
+    struct DictionaryEntry dictionary[10];
+    int size = 0,choice;
+    do {
+        printf("\nDictionary Operations:\n");
+        printf("1. Create Entry\n");
+        printf("2. Delete Entry\n");
+        printf("3. Search Entry\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                size = createEntry(dictionary, size);
+                break;
+            case 2:
+                size = deleteEntry(dictionary, size);
+                break;
+            case 3:
+                searchEntry(dictionary, size);
+                break;
+            case 4:
+                printf("Exiting the program.\n");
+                break;
+            default:
+                printf("Invalid choice. Please enter a number between 1 and 4.\n");
+        }
+    } while (choice != 4);
+    return 0;
+}
+
+     </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+
+
+Dictionary Operations:
+1. Create Entry
+2. Delete Entry
+3. Search Entry
+4. Exit
+Enter your choice: 1
+Enter the word: hello
+Enter the meaning: hi
+Entry created successfully!
+
+Dictionary Operations:
+1. Create Entry
+2. Delete Entry
+3. Search Entry
+4. Exit
+Enter your choice: 1
+Enter the word: bye
+Enter the meaning: nikle
+Entry created successfully!
+
+Dictionary Operations:
+1. Create Entry
+2. Delete Entry
+3. Search Entry
+4. Exit
+Enter your choice: 2
+Enter the word to delete: hello
+Entry deleted successfully!
+
+Dictionary Operations:
+1. Create Entry
+2. Delete Entry
+3. Search Entry
+4. Exit
+Enter your choice: 3
+Enter the word to search: bye
+Word: bye
+Meaning: nikle
+
+Dictionary Operations:
+1. Create Entry
+2. Delete Entry
+3. Search Entry
+4. Exit
+Enter your choice: 4
+Exiting the program.
+
+--------------------------------
+ </pre>
+    </div>
+</body>
+</html>
+
+ </pre>
+    </div>
+</body>
+</html>

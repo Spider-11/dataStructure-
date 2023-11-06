@@ -1,0 +1,52 @@
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>code</h3>
+    <div id="div4">
+        <pre>
+#include < stdio.h >
+int main() {
+    char inputString[100];
+    int asciiValues[100];
+    int i,j;
+    printf("Enter a string: ");
+    scanf("%[^\n]s", inputString);
+    for (i = 0; inputString[i] != '\0'; i++) {
+        asciiValues[i] = (int)inputString[i];
+    }
+    printf("ASCII values of the characters in the string:\n");
+    for ( j = 0; j < i; j++) {
+        printf("%c: %d\n", inputString[j], asciiValues[j]);
+    }
+    return 0;
+}
+
+
+     </pre>
+    </div>
+    <h3>output</h3>
+    <div id="div5">
+        <pre>
+Enter a string: hello
+ASCII values of the characters in the string:
+h: 104
+e: 101
+l: 108
+l: 108
+o: 111
+
+--------------------------------
+
+ </pre>
+    </div>
+</body>
+</html>
+
+ </pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h3>Code:</h3>
+    <div id="div4">
+        <pre>
+#include &lt;stdio.h&gt; 
+
+
+#define MAX_NODES 100
+
+int tree[MAX_NODES];
+int size = 0;
+
+void newNode(int data) {
+    if (size < MAX_NODES) {
+        tree[size] = data;
+        size++;
+    } else {
+        printf("Error: Maximum number of nodes reached.\n");
+    }
+}
+void reverseInOrderTraversal(int index, int k, int *count, int *kthLargest) {
+    if (index >= size || *count >= k) {
+        return;
+    }
+    reverseInOrderTraversal(2 * index + 2, k, count, kthLargest);
+    (*count)++;
+    if (*count == k) {
+        *kthLargest = tree[index];
+        return;
+    }
+    reverseInOrderTraversal(2 * index + 1, k, count, kthLargest);
+}
+
+int findKthLargest(int k) {
+    int count = 0;
+    int kthLargest = -1;
+    reverseInOrderTraversal(0, k, &count, &kthLargest);
+
+    return kthLargest;
+}
+
+int main() {
+    newNode(50);
+    newNode(30);
+    newNode(70);
+    newNode(20);
+    newNode(40);
+    newNode(60);
+    newNode(80);
+
+    int k = 3;
+    int kthLargest = findKthLargest(k);
+
+    if (kthLargest != -1) {
+        printf("The %dth largest element is %d\n", k, kthLargest);
+    } else {
+        printf("The %dth largest element is not present in the BST\n", k);
+    }
+
+    return 0;
+}
+
+
+        </pre>
+    </div>
+<h3>output</h3>
+    <div id="div5">
+        <pre>
+The 3th largest element is 60
+
+--------------------------------
+</pre>
+    </div>
+</body>
+</html>
